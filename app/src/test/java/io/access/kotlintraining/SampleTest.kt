@@ -23,29 +23,36 @@ class SampleTest {
 
     @Test
     fun testFizzBuzz() {
-        // TODO: implement to call fizzBuzz function
+        // TODO: implement to call fizzBuzzFree function
         fizzBuzz()
 
         // TODO: テストを書く
         // assertEquals 等の assert 系 function を使おう
         // 以下の kotlin.test パッケージのリファレンスも参照のこと
         // https://kotlinlang.org/api/latest/kotlin.test/kotlin.test/index.html
-        val expected = 1
-        val actual = 1
+        var expected = "Fizz"
+        var actual = fizzBuzzFree(3)
+        assertEquals(expected, actual, "[want] $expected [got] $actual")
+
+        expected = "Buzz"
+        actual = fizzBuzzFree(5)
+        assertEquals(expected, actual, "[want] $expected [got] $actual")
+
+        expected = "FizzBuzz"
+        actual = fizzBuzzFree(15)
+        assertEquals(expected, actual, "[want] $expected [got] $actual")
+
+        expected = "14"
+        actual = fizzBuzzFree(14)
         assertEquals(expected, actual, "[want] $expected [got] $actual")
     }
 
     @Test
-    fun testFizzBuzzFree() {
-        // TODO: implement to call fizzBuzzFree function
-        fizzBuzzFree()
-
-        // TODO: テストを書く
-        // assertEquals 等の assert 系 function を使おう
-        // 以下の kotlin.test パッケージのリファレンスも参照のこと
-        // https://kotlinlang.org/api/latest/kotlin.test/kotlin.test/index.html
-        val expected = 1
-        val actual = 1
-        assertEquals(expected, actual, "[want] $expected [got] $actual")
+    fun testIsLeapRYear() {
+        // TODO: implement to call isLeapYear function
+        //isLeapYear(y = readLine()!!.split(' ').map(String::toInt))
+        printLeapYear(2020)
     }
+
+    
 }

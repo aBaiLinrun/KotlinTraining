@@ -54,5 +54,20 @@ class SampleTest {
         printLeapYear(2020)
     }
 
-    
+    @Test
+    fun testIsOddEven() {
+        // TODO: implement to call isOddEven function
+        5.isEvenEx()
+        5.isOddEx()
+
+        // TODO: テストを書く
+        var expected = true
+        var actual = 3.isOdd()
+        assertEquals(expected, actual, "[want] $expected [got] $actual")
+
+        expected = true
+        actual = 2.isEven()
+        assertEquals(expected, actual, "[want] $expected [got] $actual")
+    }
+
 }

@@ -29,34 +29,33 @@ fun fizzBuzz() {
     for (n in 1..100) {
         // 実装する
         // use if
-        if (isDivideThree(n)) {
-            println("Fizz")
-        } else if (isDivideFive(n)) {
-            println("Buzz")
-        } else if (isDivideFifteen(n)) {
-            println("FizzBuzz")
-        } else {
-            println(n)
-        }
+        println(if (isDivideThree(n)) {
+                "Fizz"
+            } else if (isDivideFive(n)) {
+                "Buzz"
+            } else if (isDivideFifteen(n)) {
+                "FizzBuzz"
+            } else {
+                "$n"
+            })
         // use when
-        when {
-            isDivideThree(n) -> println("Fizz")
-            isDivideFive(n) -> println("Buzz")
-            isDivideFifteen(n) -> println("FizzBuzz")
-            else -> println(n)
-        }
+        println(when {
+            isDivideThree(n) -> "Fizz"
+            isDivideFive(n) -> "Buzz"
+            isDivideFifteen(n) -> "FizzBuzz"
+            else -> "$n"
+        })
     }
 }
 
 fun fizzBuzzFree(n: Int): String {
     // 実装する
-    val result: String = when {
+    return when {
         isDivideFifteen(n) -> "FizzBuzz"
         isDivideThree(n) -> "Fizz"
         isDivideFive(n) -> "Buzz"
         else -> "$n" // n.toString()
     }
-    return result
 }
 
 // うるう年かどうかを判定する関数
@@ -93,4 +92,29 @@ class Dice (val maxdice: Int = 100, var counter: Int = 0) {
     }
 
 }
+
+class NabeAtsu {
+    // TODO: 実装する
+    var counter: Int = 0
+
+    fun next(): String {
+        // TODO: 実装する
+        counter++
+        return when {
+            counter%3 == 0 -> "Aho"
+            counter.toString().indexOf("3") > -1  -> "Aho"
+            else -> "$counter"
+        }
+    }
+
+    fun nextFree(n: Int): String {
+        // TODO: 実装する
+        return when {
+            n%3 == 0 -> "Aho"
+            n.toString().indexOf("3") > -1  -> "Aho"
+            else -> "$n"
+        }
+    }
+}
+
 

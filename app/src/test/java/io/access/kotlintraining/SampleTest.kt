@@ -82,7 +82,33 @@ class SampleTest {
             println(d.roll()) // 1〜16 までの数字
         }
         println(d.roll()) // Exception
+
+        // TODO: テストを書く
+        /*
+        var expected = "I was broken !"
+        var actual = println(d.roll()).toString()
+        */
     }
 
-    
+    @Test
+    fun testNabeAtsu() {
+        val n = NabeAtsu()
+        for (i in 1..100) {
+            println(n.next())
+        }
+
+        // TODO: テストを書く
+        var expected = "Aho"
+        var actual = n.nextFree(13)
+        assertEquals(expected, actual, "[want] $expected [got] $actual")
+
+        expected = "Aho"
+        actual = n.nextFree(21)
+        assertEquals(expected, actual, "[want] $expected [got] $actual")
+
+        expected = "22"
+        actual = n.nextFree(22)
+        assertEquals(expected, actual, "[want] $expected [got] $actual")
+    }
+
 }

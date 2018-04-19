@@ -1,4 +1,6 @@
 package io.access.kotlintraining
+import java.util.Random
+import kotlin.math.max
 
 fun welcome() {
     println("welcome to ACCESS!")
@@ -76,4 +78,19 @@ fun Int.isEven() = this%2 == 0
 fun Int.isOddEx() { if (this%2 != 0) println("$this is an Odd!") else println("$this is NOT an Odd!")}
 
 fun Int.isEvenEx() { if (this%2 == 0) println("$this is an Even!") else println("$this is NOT an Even!")}
+
+class Dice (val maxdice: Int = 100, var counter: Int = 0) {
+
+    fun roll() {
+        counter++
+        if (counter in 1..100) {
+            val random = Random()
+            val n = random.nextInt(maxdice) // 0〜max までの範囲の値がランダムで返る
+            println(n)
+        } else {
+            println("I was broken !")
+        }
+    }
+
+}
 

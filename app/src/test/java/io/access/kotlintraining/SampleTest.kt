@@ -68,6 +68,21 @@ class SampleTest {
         expected = true
         actual = 2.isEven()
         assertEquals(expected, actual, "[want] $expected [got] $actual")
+
+        expected = false
+        actual = 5.isEven()
+        assertEquals(expected, actual, "[want] $expected [got] $actual")
     }
 
+    @Test
+    fun testDiceRolling() {
+        // TODO: implement to call diceRolling function
+        val d = Dice(16)
+        for (i in 1..100) {
+            println(d.roll()) // 1〜16 までの数字
+        }
+        println(d.roll()) // Exception
+    }
+
+    
 }

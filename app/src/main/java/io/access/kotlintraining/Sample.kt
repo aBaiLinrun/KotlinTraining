@@ -64,10 +64,11 @@ fun isLeapYear(y: Int): Boolean {
     return y % 400 == 0 || y % 4 == 0 && y % 100 != 0
 }
 
-fun printLeapYear(y: Int) {
+fun isLeapYearFree(y: Int): String {
     // TODO: 実装する
     val result: String = if (isLeapYear(y)) "definitely" else "NOT"
-    println("year $y is $result leap year! ")
+    //println("year $y is $result leap year!")
+    return "year $y is $result leap year!"
 }
 
 fun Int.isOdd() = this%2 != 0
@@ -80,14 +81,20 @@ fun Int.isEvenEx() { if (this%2 == 0) println("$this is an Even!") else println(
 
 class Dice (val maxdice: Int = 100, var counter: Int = 0) {
 
-    fun roll() {
+    fun random(from: Int, to: Int) = (Math.random() * (to - from) + from).toInt()
+
+    fun roll(): Int {
         counter++
         if (counter in 1..100) {
-            val random = Random()
-            val n = random.nextInt(maxdice) // 0〜max までの範囲の値がランダムで返る
-            println(n)
+            //val random = Random()
+            val n = random(from = 1, to = maxdice) // 0〜max までの範囲の値がランダムで返る
+            //println(n)
+            return n
+        } else if (counter > 100) {
+            //println("I was broken !")
+            throw Exception("I was broken !")
         } else {
-            println("I was broken !")
+            throw Exception("Impossible number !")
         }
     }
 
@@ -95,14 +102,14 @@ class Dice (val maxdice: Int = 100, var counter: Int = 0) {
 
 class NabeAtsu {
     // TODO: 実装する
-    var counter: Int = 0
+    private var counter: Int = 0
 
     fun next(): String {
         // TODO: 実装する
         counter++
         return when {
             counter%3 == 0 -> "Aho"
-            counter.toString().indexOf("3") > -1  -> "Aho"
+            counter.toString().contains("3") -> "Aho"
             else -> "$counter"
         }
     }
@@ -111,10 +118,40 @@ class NabeAtsu {
         // TODO: 実装する
         return when {
             n%3 == 0 -> "Aho"
-            n.toString().indexOf("3") > -1  -> "Aho"
+            n.toString().contains("3")  -> "Aho"
             else -> "$n"
         }
     }
 }
 
+// コンパイル通すための諸々
+class Client (val personalInfo: PersonalInfo?)
+
+class PersonalInfo (val email: String?)
+
+interface Mailer {
+    fun sendMessage(email: String, message: String): String
+}
+
+class SuperMailer : Mailer {
+    override fun sendMessage(email: String, message: String): String {
+        //println("Hello, $email, $message!")
+        return "Hello, $email, $message!"
+    }
+}
+
+fun sendMessageToClient(client: Client?, message: String?, mailer: Mailer): String? {
+    /*
+    @Nullable Client client,
+    @Nullable String message,
+    @NonNull Mailer mailer,    */
+    if (message == null) return ""
+
+    val personalInfo = client?.personalInfo
+    personalInfo ?: return ""
+
+    val email = personalInfo?.email?.let {
+        mailer.sendMessage(it, message) }
+    return email
+}
 
